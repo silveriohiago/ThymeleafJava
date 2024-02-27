@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<h2>Formulário</h2>
+<form th:action="@{/salvar}" th:object="${task}" method="post">
+    <label for="id">ID:</label>
+    <input type="text" id="id" name="id" th:field="*{id}"/>
+    <br>
+    <label for="description">Descrição:</label>
+    <input type="text" id="description" name="description" th:field="*{description}"/>
+    <br>
+    <label for="dueDate">Data de Vencimento:</label>
+    <input type="text" id="dueDate" name="dueDate" th:field="*{dueDate}"/>
+    <br>
+    <input type="submit" value="Salvar"/>
+</form>
+<h2>Lista de Tarefas</h2>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Descrição</th>
+        <th>Data de Vencimento</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="task : ${tasks}">
+        <td th:text="${task.id}"></td>
+        <td th:text="${task.description}"></td>
+        <td th:text="${task.dueDate}"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
